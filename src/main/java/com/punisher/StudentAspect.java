@@ -21,7 +21,7 @@ public class StudentAspect {
 		logger.info("Allowed execution for {}", jp);
 	}
 	
-	@BeforeThrowing(pointcut = "execution(* com.punisher.*.*(..))", throwing = "ex")
+	@AfterThrowing(pointcut = "execution(* com.punisher.*.*(..))", throwing = "ex")
     public void logError(Exception ex) {
         System.out.println("Exception CAUGHT at AOP");
 		ex.printStackTrace();
