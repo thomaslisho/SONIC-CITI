@@ -5,16 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name = "STUDENT_SEQ", initialValue = 1007)
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="STUDENT_SEQ")
     @Column(name="STUDENT_ID")
 	private int id;
+	private int rollNo;
+	private String name, dept;
 	
-	private String name;
-	private int rollNo, std;
 	public int getId() {
 		return id;
 	}
@@ -27,20 +29,20 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
 	public int getRollNo() {
 		return rollNo;
 	}
 	public void setRollNo(int rollNo) {
 		this.rollNo = rollNo;
 	}
-	public int getStd() {
-		return std;
-	}
-	public void setStd(int std) {
-		this.std = std;
-	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", rollNo=" + rollNo + ", std=" + std + "]";
+		return "Student [id=" + id + ", name=" + name + ", rollNo=" + rollNo + ", dept=" + dept + "]";
 	}
 }
